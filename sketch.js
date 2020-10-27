@@ -47,7 +47,7 @@ class Dice {
 	}
 	
 	move() {
-		this.y = this.y + 10;
+		this.y = this.y + 3;
         if(this.y == 400){
             this.y = 0;
         }
