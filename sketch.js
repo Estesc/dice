@@ -1,20 +1,9 @@
 let dice = [];
-var color1;
-var color2;
-var color3;
-var num;
-var x;
-var y = 0; 
 
 function setup() {
     createCanvas(600, 400);
-	for(let i = 0; i < 20; i++){
-        color1 = (int)(random(256));
-        color2 = (int)(random(256));
-        color3 = (int)(random(256));
-        num = (int)(random(1,7));
-        x = (int)(random(600));
-		dice[i] = new Dice(num, color1, color2, color3, x, y);
+	for(let i = 0; i < 10; i++){
+		dice[i] = new Dice();
 	}
 }
 
@@ -24,17 +13,21 @@ function draw() {
 	for(let i = 0; i < dice.length; i++) {
         dice[i].show();
         dice[i].move();
+        if(dice[i].y > 400){
+            dice[i] = new Dice();
+
+        }
 	}
 }
 
 class Dice {
-	constructor(num, color1, color2, color3, x, y) {
-		this.num = num;
-		this.color1 = color1;
-		this.color2 = color2;
-		this.color3 = color3;
-		this.x = x;
-		this.y = y;
+	constructor() {
+		this.color1 = (int)(random(256));
+        this.color2 = (int)(random(256));
+        this.color3 = (int)(random(256));
+        this.num = (int)(random(1,7));
+        this.x = (int)(random(600));
+        this.y = 0;
 	}
 	
 	show() {
@@ -48,9 +41,6 @@ class Dice {
 	
 	move() {
 		this.y = this.y + 3;
-        if(this.y == 400){
-            this.y = 0;
-        }
 
 	}
 
